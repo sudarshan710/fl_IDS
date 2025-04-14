@@ -13,6 +13,9 @@ python3 app.py
 - Central Aggregator Server receives encrypted model updates (not raw data), aggregates them using Federated Averaging (FedAvg), and sends the updated global model back to edge nodes for the next training round.
 - Secure Communication is established using HTTPS/TLS protocols to encrypt data in transit.
 
+  ![CLOUD1](https://github.com/user-attachments/assets/2378db01-f066-4c03-8c1d-75380f554fc4)
+
+
 ## 🔐 Privacy & Security Enhancements
 - Differential Privacy: Adds noise to model updates to protect individual data points.
 - Homomorphic Encryption: Allows encrypted updates to be aggregated without decryption.
