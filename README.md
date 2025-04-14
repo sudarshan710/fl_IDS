@@ -39,3 +39,33 @@ Each node:
 - Security: OpenSSL, HTTPS/TLS
 - Web & API: Flask
 - Environment: Linux, Docker
+
+## Results and Analysis
+The integration of Federated Learning (FL) with cloud computing provides an efficient, scalable, and privacy-preserving solution for large-scale anomaly detection tasks like Intrusion Detection Systems (IDS).
+
+Traditional ML models rely on centralized data, which poses challenges in terms of privacy, bandwidth, and scalability. FL eliminates the need to transfer raw data — models are trained locally on edge devices, and only model updates are shared with a central cloud server for aggregation. This ensures:
+
+- Faster processing
+- Reduced bandwidth
+- Improved data privacy
+
+When combined with cloud computing, FL enables:
+
+- Real-time aggregation of model updates
+- Seamless scaling across distributed environments
+- Reduced infrastructure maintenance
+
+This makes FL ideal for real-time applications in cybersecurity, healthcare, and finance
+
+### Local Model 1
+![2-1](https://github.com/user-attachments/assets/4b5cf1e8-3264-419e-8d20-858eb1dc585a)
+
+### Local Model 2
+![2-2](https://github.com/user-attachments/assets/cd49af4c-ee1e-4737-baf4-d37c8858cc90)
+
+### Federated Model
+![2-3](https://github.com/user-attachments/assets/55fde170-ad1a-465a-86d5-3d9035e24afd)
+
+
+
+ 
