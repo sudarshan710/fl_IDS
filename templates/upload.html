@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVM Model and Federated Learning</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">SVM Model and Federated Learning</h1>
+        <p class="text-center">Click a button to run a model and see the results!</p>
+
+        <div class="text-center">
+            <button id="runModel1" class="btn btn-primary btn-lg">Run Model 1</button>
+            <button id="runModel2" class="btn btn-success btn-lg">Run Model 2</button>
+            <button id="runFL" class="btn btn-warning btn-lg">Run Federated Learning</button>
+        </div>
+
+        <hr>
+
+        <div id="model2Upload" class="text-center">
+            <h3>Upload a CSV for Model 2</h3>
+            <input type="file" id="csvFile" class="form-control mb-3">
+        </div>
+
+        <div id="results" class="mt-5">
+            <h3>Model Results</h3>
+            <div id="modelResults" class="alert alert-info">
+                <!-- This section will display results like Accuracy, Precision, etc. -->
+                <p>Click a button to see the results!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Helper function to display the results
+        function displayResults(data) {
+            let resultHTML = `
+                <h5>Accuracy: ${data.Accuracy}</h5>
+                <h5>Precision: ${data.Precision}</h5>
+                <h5>Recall: ${data.Recall}</h5>
+                <h5>F1 Score: ${data["F1 Score"]}</h5>
+                <h5>Confusion Matrix:</h5>
+                <pre>${JSON.stringify(data["Confusion Matrix"], null, 2)}</pre>
+            `;
+            $('#modelResults').html(resultHTML);
+        }
+
+        // Function to call Model 2 route
+        $('#runModel2').click(function() {
+            var file = $('#csvFile')[0].files[0];  // Get the selected file
+
+            if (!file) {
+                alert('Please upload a CSV file');
+                return;
+            }
+
+            var formData = new FormData();
+            formData.append('file', file);
+
+            $.ajax({
+                url: '/model2',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    displayResults(data);
+                },
+                error: function(error) {
+                    $('#modelResults').html('<p class="text-danger">Error: ' + error.responseJSON.error + '</p>');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
